@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>delete</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+        {% if user.id == post.author.id or user.id == 1 %}
+            <h1> Delete post ... </h1>
+            <br> <br>
+            <h3> Delete:  {{ post.title }} </h3>
+            <br>
+            <div class="mb-3">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <strong> are you sure !? </strong> <br><br/>
+                    <button class="btn btn-light"> Delete </button>
+                </form>
+            </div>
+        {% else %}
+            <h1> Siz bu postni ochira olmaysiz </h1>
+        {% endif %}
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>add</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+        {% if user.is_authenticated %}
+            <h1> Add post ... </h1>
+            <br> <br>
+            <div class="mb-3">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.media }}
+                    {{ form.as_p }}
+                    <button class="btn btn-light"> POST </button>
+                </form>
+            </div>
+        {% else %}
+            <a href="{% url 'login' %}">
+                Sizga buyoqga kirishga ruxsat yoo, Kechiring oldin royhatdan oting
+            </a>
+        {% endif %}
+        <script>
+            var name = "{{ user.username }}";
+            document.getElementById("elder").value = name;
+
+
+        </script>
+
+    {% endblock %}
+</body>
+</html>

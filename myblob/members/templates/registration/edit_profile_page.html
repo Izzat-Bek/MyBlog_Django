@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Profile Page</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+        {% if user.is_authenticated %}
+            {% if user.id == profile.user.id or user.id == 1 %}
+                <h1> Edit Profile ... </h1>
+                <br> <br>
+                <div class="mb-3">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button class="btn btn-light"> Update Profile </button>
+                    </form>
+                </div>
+            {% else %}
+                <h1> Bu sizni Profiliz mas , Kechirin siz bu profilni ozgartira olmaysiz</h1>
+            {% endif %}
+        {% else %}
+            <a href="{% url 'login' %}">
+                Sizga buyoqga kirishga ruxsat yoo, Kechiring oldin royhatdan oting
+            </a>
+        {% endif %}
+    {% endblock %}
+</body>
+</html>

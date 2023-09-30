@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>add cotegory</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+        {% if user.is_authenticated %}
+            <h1> Add category ... </h1>
+            <br> <br>
+            <div class="mb-3">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="btn btn-light"> POST </button>
+                </form>
+            </div>
+        {% else %}
+            <a href="{% url 'login' %}">
+                Sizga buyoqga kirishga ruxsat yoo, Kechiring oldin royhatdan oting
+            </a>
+        {% endif %}
+    {% endblock %}
+</body>
+</html>

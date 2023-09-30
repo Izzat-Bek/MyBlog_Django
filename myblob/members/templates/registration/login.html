@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+        <h1> Login ... </h1>
+        <br> <br>
+        <div class="mb-3">
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label  class="form-label">username</label>
+                    <input type="text" class="form-control" name="username" placeholder="Username">
+<!--                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>-->
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" placeholder="Password">
+
+                </div>
+                <button class="btn btn-light"> LOGIN </button>
+            </form>
+            <br> <br>
+            <div class="form-text">Kechirasiz registratsiyadan otmagan bolsangiz
+                <strong>
+                    <a href="{% url 'register' %}">
+                        ustiga bosin...
+                    </a>
+                </strong>
+            </div>
+        </div>
+    {% endblock %}
+</body>
+</html>

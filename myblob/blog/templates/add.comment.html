@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Comment</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+            <h1> Add Comment ... </h1>
+            <br> <br>
+            <div class="mb-3">
+                <form method="post" >
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="btn btn-light"> POST </button>
+                </form>
+            </div>
+    {% endblock %}
+</body>
+</html>
